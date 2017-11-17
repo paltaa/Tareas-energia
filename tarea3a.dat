@@ -1,0 +1,13 @@
+set B:= A  B  D;
+set A:= A  B  C  D;
+
+param MCi:=
+    A    70
+    B    20
+    D    80;
+    
+param demanda:=
+    A   100
+    B   0
+    C   100
+    D   100;
