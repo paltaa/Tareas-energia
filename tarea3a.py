@@ -89,3 +89,15 @@ print 'fdc, ', instance.fdc.value
 print 'fbc, ', instance.fbc.value
 print 'fca, ', instance.fca.value
 
+print "Duals"
+from pyomo.core import Constraint
+for c in instance.component_objects(Constraint, active=True):
+    print ("   Constraint "+str(c))
+    cobject = getattr(instance, str(c))
+    for index in cobject:
+        print ("      ", index, instance.dual[cobject[index]])
+
+print "Precio nodo A: ", instance.dual[demanda_nodo_A]
+print "Precio nodo B: ", instance.dual[demanda_nodo_B]
+print "Precio nodo C: ", instance.dual[demanda_nodo_C]
+print "Precio nodo D: ", instance.dual[demanda_nodo_D]

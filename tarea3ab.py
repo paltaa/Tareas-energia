@@ -119,4 +119,11 @@ print 'fbd, ', instance.fbd.value
 print 'fdc, ', instance.fdc.value
 print 'fbc, ', instance.fbc.value
 print 'fca, ', instance.fca.value
+print "Duals"
+from pyomo.core import Constraint
+for c in instance.component_objects(Constraint, active=True):
+    print ("   Constraint "+str(c))
+    cobject = getattr(instance, str(c))
+    for index in cobject:
+        print ("      ", index, instance.dual[cobject[index]])
 
